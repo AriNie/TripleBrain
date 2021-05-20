@@ -28,13 +28,13 @@ Author: Non　<!-- 自分の名前 -->
 
 2. $i$が$0$から$n$のときまで`fact[i]`、`fact_inv[i]`、`inv[i]`を計算しておく。
 
-3. ${}_n C_k$を素数$P$で割ったあまりを`fact[n] * fact_inv[k]` * fact_inv[n - k] / P`とする。
+3. ${}_n C_k$を素数$P$で割ったあまりを`fact[n] * fact_inv[k] * fact_inv[n - k] / P`とする。
 
 1.の逆元を求める際は
 
 - `fact[i + 1]`: $(i+1)!\equiv i!\times (i+1) (mod P)$
 
-- `inv[i + 1]`: $(i+1)^-1 \equiv -(P % (i+1))^-1 \times [\frac{P}{i+1}]$
+- `inv[i + 1]`: $(i+1)^-1 \equiv -(P mod (i+1))^-1 \times [\frac{P}{i+1}]$
 
 - `fact_inv[I+1]`: $((i+1)!)^-1\equiv (i!)^-1 \times (i+1)^-1 (mod P)$
 
@@ -79,7 +79,7 @@ void init_nCk(int SIZE) {
 
 1. $i$が$0$から$k$のときまで、`fact_inv[i]`、`inv[i]`を計算しておく。
 
-2. ${}_n C_k = \frac{n}{1} \times |frac{n-1}{2} \times ... \times \frac{n-k+1}{k}$を`fact_inv[k]`と`inv[i]`を利用して計算する。
+2. ${}_n C_k = \frac{n}{1} \times \frac{n-1}{2} \times ... \times \frac{n-k+1}{k}$を`fact_inv[k]`と`inv[i]`を利用して計算する。
 
 2.の計算については
 
