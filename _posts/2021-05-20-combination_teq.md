@@ -144,6 +144,43 @@ void init_nCk(int n, int SIZE) {
 }
 ```
 
+## 逆元を使用した二項係数の計算の仕組み
+
+ここでは
+
+${}_n C_k \equiv n! \dot (k!)^-1 \dot ((n-k)!)^-1 (mod P)$
+
+特に$i^-1 \equiv -(P mod i)^-1 \times [\frac{P}{i}] (mod P)$
+
+を示す。
+
+まず、$P=[\frac{P}{i}] \times i + (P mod i)$ について$P$を法とすると
+
+$0 \equiv [\frac{P}{i}] \times i + (P mod i) (mod P)$
+
+全体に$i^-1$をかけて
+
+$0 \equiv [\frac{P}{i}] + (P mod i) \times i^-1 (mod P)$
+
+$(P mod i) \times i^-1 \equiv -[\frac{P}{i}] (mod P)$
+
+$i^-1 \equiv -(P mod i) ^-1 \times [\frac{P}{i}] (mod P)$
+
+となり、示される。
+
+これをプログラミングすると
+
+`inv[i] = P - inv[P % i] * (P / i) % P`
+
+となる。
+
+<br>
+
+
+
+
+
+
 
 [foobarpiyopiyo]:{{"/foo/bar/piyo/piyo"|prepend:site.url}}
 
